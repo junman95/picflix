@@ -30,7 +30,6 @@ const useFetchStaticImages = () => {
     setCurrentId(currentId + 6);
     setCall(false);
     return () => {
-      console.log("erase");
       setImages([]);
     };
   }, [call]);
