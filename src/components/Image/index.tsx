@@ -1,13 +1,13 @@
-import { ListItem } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 
 type Props = {
   image: string;
+  size?: string;
 };
 
-const Image = ({ image }: Props) => {
+const Image = ({ image, size }: Props) => {
   return (
-    <CenteredListItem>
+    <CenteredListItem size={size}>
       <img width={"100%"} src={image} alt={image} />
     </CenteredListItem>
   );
@@ -15,11 +15,12 @@ const Image = ({ image }: Props) => {
 
 export default Image;
 
-const CenteredListItem = styled(ListItem)`
+const CenteredListItem = styled.div<{ size?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem 0;
-  width: 100px;
-  height: 100px;
+  margin: 0.5rem 0.5rem;
+  width: ${({ size }) => (size ? `${size}px` : "100px")};
+  height: ${({ size }) => (size ? `${size}px` : "100px")};
+  min-width: ${({ size }) => (size ? `${size}px` : "100px")};
 `;
